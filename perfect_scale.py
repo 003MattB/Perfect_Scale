@@ -25,7 +25,7 @@ def midpoint(ptA, ptB):
 
 # load the image, convert to gray scale, and blurr it a little
 #image = cv2.imread(args['image']) # from command line
-image = cv2.imread('reg.JPG') # hard coded
+image = cv2.imread('img/reg.JPG') # hard coded
 # crop the image -- the upper left quadrent
 image = image[0: int(len(image) * 0.5), 0:int(len(image[0]) * 0.5)]
 #image = ~image # invert the image
