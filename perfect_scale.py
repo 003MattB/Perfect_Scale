@@ -86,6 +86,9 @@ for i,quadrent in enumerate(("ul","ur","ll","lr")):
 
 cv2.imshow('Contours',img)
             
+# calculate what the scale and the offset needs to be
+# divide by -2 becuse if the average is positive i.e. the offset is
+# positive that means it needs to scale in
 
 top_scalex = (ul_avg[1]   + ur_avg[1]) / -2
 top_offsetx = ur_avg[1] + top_scalex
