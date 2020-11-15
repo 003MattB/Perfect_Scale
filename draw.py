@@ -14,4 +14,4 @@ return:
     x,y,w,h = cv2.boundingRect(cnt)
     x += ox
     y += oy
-    cv2.rectangle(img,(x,y),(x+w,y+h),color,2)
+    cv2.rectangle(img,(x,y),(x+w,y+h),color,1)
