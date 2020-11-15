@@ -3,6 +3,7 @@ import cv2
 import crop
 import calc
 import pre_process
+import draw
 
 
 # load the image
@@ -49,5 +50,23 @@ print("ur", offsets[1])
 print("ll", offsets[2])
 print("lr", offsets[3])
 
+# draw bounding boxes around the contours and show the result
+for i,quadrent in enumerate(("ul","ur","ll","lr")):
+    pair = quadrent_pairs[i]
+    for parent,child in pair:
+        xoff = 0
+        yoff = 0
+        if quadrent == 'ur':
+            xoff = int(img.shape[1]/2)
+        elif quadrent == 'll':
+            yoff = int(img.shape[0]/2)
+        elif quadrent == 'lr':
+            xoff = int(img.shape[1]/2)
+            yoff = int(img.shape[0]/2)
+        draw.draw_box_around_contour(img, parent, ox = xoff, oy = yoff)
+        draw.draw_box_around_contour(img, child, ox = xoff, oy = yoff,
+                                     color = (0,0,255))
 
+cv2.imshow('Contours',img)
+            
 
