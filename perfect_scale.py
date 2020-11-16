@@ -90,10 +90,10 @@ cv2.imshow('Contours',img)
 # divide by -2 becuse if the average is positive i.e. the offset is
 # positive that means it needs to scale in
 
-top_scalex = (ul_avg[1]   + ur_avg[1]) / -2
-top_offsetx = ur_avg[1] + top_scalex
-bot_scalex = (ll_avg[1] + lr_avg[1]) / -2
-bot_offsetx = lr_avg[1] + bot_scalex
+top_scalex = (ul_avg[1] + ur_avg[1]) / 2
+top_offsetx = ur_avg[1] - top_scalex
+bot_scalex = (ll_avg[1] + lr_avg[1]) / 2
+bot_offsetx = lr_avg[1] - bot_scalex
 avg_scalex = (top_scalex + bot_scalex) / 2
 avg_offsetx = (top_offsetx + bot_offsetx) / 2
 
@@ -105,10 +105,10 @@ print("bot x scale: {:.4f}, bot x offset: {:.4f}".upper().format(bot_scalex,
 print("avg x scale: {:.4f}, avg x offset: {:.4f}".upper().format(avg_scalex,
                                                                  avg_offsetx))
 
-left_scaley = (ul_avg[2] + ll_avg[2]) / -2
-left_offsety = ll_avg[2] + left_scaley
-right_scaley = (ur_avg[2] + lr_avg[2]) / -2
-right_offsety = lr_avg[2] + right_scaley
+left_scaley = (ul_avg[2] + ll_avg[2]) / 2
+left_offsety = ll_avg[2] - left_scaley
+right_scaley = (ur_avg[2] + lr_avg[2]) / 2
+right_offsety = lr_avg[2] - right_scaley
 avg_scaley = (left_scaley + right_scaley) / 2
 avg_offsety = (left_offsety + right_offsety) / 2
 

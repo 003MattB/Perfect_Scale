@@ -28,6 +28,6 @@ parent child pairs of contours"""
     for n,p,child,parent in hierarchy[0]:
         if (child | parent) != -1:
             child_parent = hierarchy[0][child][3]
-            ret.append((cnts[child_parent],cnts[child]))
+            ret.append((cnts[child], cnts[child_parent]))
 
     return ret
