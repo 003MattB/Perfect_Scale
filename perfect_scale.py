@@ -17,7 +17,7 @@ PIX_PER_MIL = PIX_PER_INCH / 1000 # pixels per thousandth of an inch
 
 
 # load the image
-img = cv2.imread('img/test2.jpg')
+img = cv2.imread('img/34434p11test.jpg')
 
 #convert it to gray-scale
 img_gs = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
