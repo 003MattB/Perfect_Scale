@@ -14,6 +14,7 @@ import draw
 # PIX_PER_INCH = w / width_in_inches
 PIX_PER_INCH = 579.7101449275362
 PIX_PER_MIL = PIX_PER_INCH / 1000 # pixels per thousandth of an inch
+QUADRENT_ORDER = ("ul","ur","ll","lr") # the order the quadrents are stored
 
 
 # load the image
@@ -50,9 +51,11 @@ for cnt,h in contours:
 
 # get the average offset of drills from pad centers for each quadrent
 offsets = []
-for pairs in quadrent_pairs:
+for pairs,q in zip(quadrent_pairs,QUADRENT_ORDER):
+    print("calculating offset...", q)
     offset = calc.avg_dist(pairs)
     offsets.append(offset)
+    print("")
 
 ul_avg = (np.array(offsets[0]) / PIX_PER_INCH)
 ur_avg = (np.array(offsets[1]) / PIX_PER_INCH)
@@ -68,7 +71,7 @@ print("ul [{:.4f}, {:.4f}, {:.4f}] |".format(ul_avg[0],ul_avg[1],ul_avg[2]), "ur
 print("-"*29,"+","-"*29)
 print("ll [{:.4f}, {:.4f}, {:.4f}] |".format(ll_avg[0],ll_avg[1],ll_avg[2]), "lr [{:.4f}, {:.4f}, {:.4f}]".format(lr_avg[0],lr_avg[1],lr_avg[2]))
 # draw bounding boxes around the contours and show the result
-for i,quadrent in enumerate(("ul","ur","ll","lr")):
+for i,quadrent in enumerate(QUADRENT_ORDER):
     pair = quadrent_pairs[i]
     for parent,child in pair:
         xoff = 0

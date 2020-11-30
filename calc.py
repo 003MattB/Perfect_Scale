@@ -1,7 +1,7 @@
 import cv2
 import math
 import numpy as np
-
+DEBUG = True
 def contour_center(c):
     """Returns the center point (pixels) of the given contour"""
     (x,y),r = cv2.minEnclosingCircle(c)
@@ -14,8 +14,16 @@ x and y offset of the contours. (distance,dx,dy)"""
     center1 = contour_center(c1)
     center2 = contour_center(c2)
     dx = center1[0] - center2[0]
+    dx *= -1
     dy = center1[1] - center2[1]
     d = math.sqrt(dx**2 + dy**2)
+    if DEBUG:
+        a1 = cv2.contourArea(c1)
+        a2 = cv2.contourArea(c2)
+        print("dist_between_contours()")
+        print("area1 =",a1,"area2 =",a2)
+        print("center1 = ",center1,"center2 = ",center2)
+        print("dx =", dx, "dy =",dy, "d =",d)
     return (d,dx,dy)
 
 def avg_dist(cnt_pairs):
