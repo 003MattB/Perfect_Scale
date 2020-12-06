@@ -18,7 +18,7 @@ QUADRENT_ORDER = ("ul","ur","ll","lr") # the order the quadrents are stored
 
 
 # load the image
-img = cv2.imread('img/34434p21proc.jpg')
+img = cv2.imread('img/33992p.jpg')
 
 #convert it to gray-scale
 img_gs = cv2.cvtColor(img,cv2.COLOR_BGR2GRAY)
